@@ -1,0 +1,4 @@
+token.*
+credentials.json
+__pycache__/
+logs/
