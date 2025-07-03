@@ -20,20 +20,21 @@
 ---
 
 ## 🧩 מבנה הפרויקט
-
----gmail-agent/
-├── main.py # נקודת הכניסה הראשית
-├── auth.py # התחברות ל-Gmail API עם הצפנה
-├── rules.py # קריאת כללי סיווג מיילים
-├── utils.py # לוגים וניקוי שמות קבצים
-├── message_handler.py # כל הפונקציות של עיבוד מייל
-├── rules.json # קובץ כללים
-├── credentials.json # קובץ Client ID של Google
-├── token.enc # טוקן מוצפן
-├── token.key # מפתח להצפנה
-├── invoicesFromGmail/ # תיקיית יעד לחשבוניות
-├── downloads/ # תיקיית יעד לקבצים כלליים
-├── logs/ # קבצי לוג
+GmailAgent/                 ← התיקייה הראשית של הפרויקט
+│
+├── main.py                 ← קובץ ראשי שמריץ את הסוכן
+├── auth.py                 ← מטפל באימות מול Gmail
+├── rules.py                ← קריאה ושמירה של הכללים (rules.json)
+├── utils.py                ← פונקציות עזר (לוגים, ניקוי שם קובץ ועוד)
+├── message_handler.py      ← עיבוד של מייל בודד (סיווג, מחיקה, העברה וכו')
+├── gui_rules_editor.py     ← קובץ הממשק הגרפי (GUI)
+│
+├── rules.json              ← הקובץ שבו שמורים הכללים שלך
+├── rules_backup.json       ← גיבוי של rules.json לפני שינויים
+├── invoicesFromGmail/      ← תיקייה לשמירת קובצי PDF של חשבוניות
+├── downloads/              ← תיקייה כללית לקבצים אחרים שהורדו מהמייל
+│
+└── README.md               ← הקובץ שאת שואלת עליו – מסביר את הפרויקט
 
 ## 🛠 התקנה
 
