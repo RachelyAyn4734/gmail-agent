@@ -4,7 +4,7 @@ import json, shutil, os, subprocess
 
 RULES_PATH = 'rules.json'
 BACKUP_PATH = 'rules_backup.json'
-AGENT_SCRIPT = 'SmartGmailAgent.py'
+AGENT_SCRIPT ='main.py'
 
 # ---------------- utils -----------------
 

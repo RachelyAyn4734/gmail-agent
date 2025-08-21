@@ -9,6 +9,8 @@ from email.mime.multipart import MIMEMultipart
 from googleapiclient.discovery import Resource
 from utils import clean_filename
 import logging
+from ai_agent import AIClassifier
+
 
 logger = logging.getLogger('gmail_agent')
 
@@ -107,6 +109,7 @@ def add_label(service: Resource, msg_id: str, label_name="טופל על ידי �
     logger.info(f"🏷 נוספה תווית '{label_name}' למייל {msg_id}")
 
 def process_message(service: Resource, msg_id: str, rules: dict):
+    classifier = AIClassifier()
     msg = service.users().messages().get(userId='me', id=msg_id, format='full').execute()
     payload = msg['payload']
     headers = {h['name']: h['value'] for h in payload.get('headers', [])}
@@ -121,6 +124,10 @@ def process_message(service: Resource, msg_id: str, rules: dict):
         return
 
     classification = classify_email(subject, body_plain, sender, attachments, rules)
+    
+    if classification == 'other':  # ברירת מחדל – תני ל-GPT לעזור
+        classification = classifier.classify_email(subject, body_plain)
+
     logger.info(f"📧 מייל: '{subject}' → סיווג: {classification}")
 
     if classification == 'preserve':

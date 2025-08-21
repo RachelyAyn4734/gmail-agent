@@ -2,3 +2,7 @@ token.*
 credentials.json
 __pycache__/
 logs/
+downloads/
+invoicesFromGmail/
+.env
+

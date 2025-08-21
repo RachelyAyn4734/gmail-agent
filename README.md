@@ -19,6 +19,9 @@
 
 ---
 
+באמצעות מודל GPT (ברירת מחדל: `gpt-4`), המערכת מבצעת סיווג חכם של המייל לקטגוריות:
+
+
 ## 🧩 מבנה הפרויקט
 GmailAgent/                 ← התיקייה הראשית של הפרויקט
 │
@@ -27,6 +30,7 @@ GmailAgent/                 ← התיקייה הראשית של הפרויקט
 ├── rules.py                ← קריאה ושמירה של הכללים (rules.json)
 ├── utils.py                ← פונקציות עזר (לוגים, ניקוי שם קובץ ועוד)
 ├── message_handler.py      ← עיבוד של מייל בודד (סיווג, מחיקה, העברה וכו')
+├── ai_agent.py ← סיווג מיילים עם GP
 ├── gui_rules_editor.py     ← קובץ הממשק הגרפי (GUI)
 │
 ├── rules.json              ← הקובץ שבו שמורים הכללים שלך
@@ -41,9 +45,13 @@ GmailAgent/                 ← התיקייה הראשית של הפרויקט
 ```bash
 pip install -r requirements.txt
 
+--define the .env file  .env
+OPENAI_API_KEY=your_openai_key_here
+
 ## הפעלה
 ```bash
 python main.py 15
+
 
 ## 🧩 GUI לניהול כללים
 
